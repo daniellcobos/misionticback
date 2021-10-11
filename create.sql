@@ -1,0 +1,9 @@
+create table employee (id integer not null auto_increment, department_id integer, name varchar(255), specialty varchar(255), graduate_year integer, primary key (id)) engine=InnoDB
+create table employee (id integer not null auto_increment, department_id integer, name varchar(255), specialty varchar(255), graduate_year integer, primary key (id)) engine=InnoDB
+create table employee (id integer not null auto_increment, department_id integer, name varchar(255), specialty varchar(255), graduate_year integer, primary key (id)) engine=InnoDB
+create table employee (id integer not null auto_increment, department_id integer, name varchar(255), specialty varchar(255), graduate_year integer, primary key (id)) engine=InnoDB
+create table employee (id integer not null auto_increment, department_id integer, name varchar(255), specialty varchar(255), graduate_year integer, primary key (id)) engine=InnoDB
+create table doctor (id integer not null auto_increment, department_id integer, name varchar(255), specialty varchar(255), graduate_year integer, primary key (id)) engine=InnoDB
+create table doctor (id integer not null auto_increment, department_id integer, name varchar(255), specialty varchar(255), graduate_year integer, primary key (id)) engine=InnoDB
+create table doctor (id integer not null auto_increment, department_id integer, name varchar(255), specialty varchar(255), graduate_year integer, primary key (id)) engine=InnoDB
+create table doctor (id integer not null auto_increment, department_id integer, name varchar(255), specialty varchar(255), graduate_year integer, primary key (id)) engine=InnoDB
