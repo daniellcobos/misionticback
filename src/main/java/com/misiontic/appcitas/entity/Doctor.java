@@ -4,10 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
-@Table(name="Doctor")
+
 public class Doctor {
 
 	// define fields
@@ -19,21 +23,26 @@ public class Doctor {
 	
 	@Column(name="NAME")
 	private String Name;
-	
-	@Column(name="SPECIALTY")
-	private String Specialty;
-	
+	@Column(name="DESCRIPCION")
+	private String description;
 	@Column(name="GRADUATE_YEAR")
-	private int Year;
+	private int graduate_year;
+	@JsonProperty("department")
 	@Column(name="DEPARTMENT_ID")
-	private int DepartmentId;
-	public Doctor(int id, String name, String specialty, int year, int departmentId) {
-		super();
+	private int department_id;
+	@ManyToOne()
+    @JoinColumn(name = "Specialty")
+	private Specialty Specialty; 
+	
+	public Doctor() {}
+	public Doctor(int id, String name, Specialty specialty, int graduate_year, int department_id,String description) {
+	
 		this.id = id;
 		Name = name;
 		Specialty = specialty;
-		Year = year;
-		DepartmentId = departmentId;
+		this.graduate_year = graduate_year;
+		this.department_id = department_id;
+		this.description =description;
 	}
 	public int getId() {
 		return id;
@@ -47,23 +56,31 @@ public class Doctor {
 	public void setName(String name) {
 		Name = name;
 	}
-	public String getSpecialty() {
+	public Specialty getSpecialty() {
 		return Specialty;
 	}
-	public void setSpecialty(String specialty) {
+	public void setSpecialty(Specialty specialty) {
 		Specialty = specialty;
 	}
 	public int getYear() {
-		return Year;
+		return graduate_year;
 	}
 	public void setYear(int year) {
-		Year = year;
+		graduate_year = year;
 	}
+	@JsonProperty("department")
 	public int getDepartmentId() {
-		return DepartmentId;
+		return department_id;
 	}
+	@JsonProperty("department")
 	public void setDepartmentId(int departmentId) {
-		DepartmentId = departmentId;
+		department_id = departmentId;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 		

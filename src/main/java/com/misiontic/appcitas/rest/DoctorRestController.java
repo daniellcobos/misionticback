@@ -29,14 +29,14 @@ public class DoctorRestController {
 	}
 	
 	// expose "/doctors" and return list of doctors
-	@GetMapping("/doctors")
+	@GetMapping("/Doctor/all")
 	public List<Doctor> findAll() {
 		return doctorService.findAll();
 	}
 
 	// add mapping for GET /doctors/{doctorId}
 	
-	@GetMapping("/doctors/{doctorId}")
+	@GetMapping("/Doctor/{doctorId}")
 	public Doctor getDoctor(@PathVariable int doctorId) {
 		
 		Doctor theDoctor = doctorService.findById(doctorId);
@@ -50,7 +50,7 @@ public class DoctorRestController {
 	
 	// add mapping for POST /doctors - add new doctor
 	
-	@PostMapping("/doctors")
+	@PostMapping("/Doctor/save")
 	public Doctor addDoctor(@RequestBody Doctor theDoctor) {
 		
 		// also just in case they pass an id in JSON ... set id to 0
@@ -65,7 +65,7 @@ public class DoctorRestController {
 	
 	// add mapping for PUT /doctors - update existing doctor
 	
-	@PutMapping("/doctors")
+	@PutMapping("/Doctor")
 	public Doctor updateDoctor(@RequestBody Doctor theDoctor) {
 		
 		doctorService.save(theDoctor);
