@@ -11,18 +11,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 
 public class Specialty {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
+	@JsonView({view.Doctor.class , view.Specialty.class})
 	private int id;
-	
+	@JsonView(view.Specialty.class)
 	@Column(name="NAME")
 	private String Name;
+	@JsonView(view.Specialty.class)
 	@Column(name="DESCRIPCION")
 	private String description;
+	@JsonView(view.Specialty.class)
 	@OneToMany(mappedBy = "Specialty", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Doctor> Doctors;
 	

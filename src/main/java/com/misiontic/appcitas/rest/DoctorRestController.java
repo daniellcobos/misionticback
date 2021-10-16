@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.misiontic.appcitas.entity.Doctor;
+import com.misiontic.appcitas.entity.view;
 import com.misiontic.appcitas.service.DoctorService;
 
 
@@ -29,7 +31,9 @@ public class DoctorRestController {
 	}
 	
 	// expose "/doctors" and return list of doctors
+	
 	@GetMapping("/Doctor/all")
+	@JsonView(view.Doctor.class)
 	public List<Doctor> findAll() {
 		return doctorService.findAll();
 	}

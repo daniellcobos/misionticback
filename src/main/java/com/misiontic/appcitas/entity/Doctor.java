@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 
@@ -19,29 +20,35 @@ public class Doctor {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
+	@JsonView({view.Doctor.class , view.Specialty.class})
 	private int id;
 	
 	@Column(name="NAME")
+	@JsonView({view.Doctor.class , view.Specialty.class})
 	private String Name;
 	@Column(name="DESCRIPCION")
+	@JsonView(view.Doctor.class)
 	private String description;
 	@Column(name="GRADUATE_YEAR")
+	@JsonView(view.Doctor.class)
 	private int graduate_year;
 	@JsonProperty("department")
-	@Column(name="DEPARTMENT_ID")
-	private int department_id;
+	@Column(name="DEPARTMENT")
+	@JsonView(view.Doctor.class)
+	private String department;
+	@JsonView(view.Doctor.class)
 	@ManyToOne()
     @JoinColumn(name = "Specialty")
 	private Specialty Specialty; 
 	
 	public Doctor() {}
-	public Doctor(int id, String name, Specialty specialty, int graduate_year, int department_id,String description) {
+	public Doctor(int id, String name, Specialty specialty, int graduate_year, String department_id,String description) {
 	
 		this.id = id;
 		Name = name;
 		Specialty = specialty;
 		this.graduate_year = graduate_year;
-		this.department_id = department_id;
+		this.department = department_id;
 		this.description =description;
 	}
 	public int getId() {
@@ -57,6 +64,7 @@ public class Doctor {
 		Name = name;
 	}
 	public Specialty getSpecialty() {
+		Specialty.setDoctors(null);
 		return Specialty;
 	}
 	public void setSpecialty(Specialty specialty) {
@@ -69,12 +77,12 @@ public class Doctor {
 		graduate_year = year;
 	}
 	@JsonProperty("department")
-	public int getDepartmentId() {
-		return department_id;
+	public String getDepartment() {
+		return department;
 	}
 	@JsonProperty("department")
-	public void setDepartmentId(int departmentId) {
-		department_id = departmentId;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 	public String getDescription() {
 		return description;
