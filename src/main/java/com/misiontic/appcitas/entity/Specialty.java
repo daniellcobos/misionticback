@@ -19,12 +19,12 @@ public class Specialty {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	@JsonView({view.Doctor.class , view.Specialty.class})
+	@JsonView({view.Doctor.class , view.Specialty.class,view.Mensajes.class})
 	private int id;
-	@JsonView(view.Specialty.class)
+	@JsonView({view.Specialty.class,view.Mensajes.class})
 	@Column(name="NAME")
 	private String Name;
-	@JsonView(view.Specialty.class)
+	@JsonView({view.Specialty.class,view.Mensajes.class})
 	@Column(name="DESCRIPCION")
 	private String description;
 	@JsonView(view.Specialty.class)
@@ -72,6 +72,6 @@ public class Specialty {
 	public void setDoctors(List<Doctor> doctors) {
 		Doctors = doctors;
 	}
-	
+
 	
 }
