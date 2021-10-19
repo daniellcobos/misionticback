@@ -3,6 +3,7 @@ package com.misiontic.appcitas.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -52,7 +54,8 @@ private ClienteService clienteService;
 	// add mapping for POST /clientes - add new cliente
 	
 	@PostMapping("/Client/save")
-	public Cliente addCliente(@RequestBody Cliente theCliente) {
+	@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	public void addCliente(@RequestBody Cliente theCliente) {
 		
 		// also just in case they pass an id in JSON ... set id to 0
 		// this is to force a save of new item ... instead of update
@@ -61,7 +64,7 @@ private ClienteService clienteService;
 		
 		clienteService.save(theCliente);
 		
-		return theCliente;
+		
 	}
 	
 	// add mapping for PUT /clientes - update existing cliente

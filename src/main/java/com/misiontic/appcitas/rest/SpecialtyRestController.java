@@ -3,6 +3,7 @@ package com.misiontic.appcitas.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -50,9 +52,9 @@ private SpecialtyService specialtyService;
 	}
 	
 	// add mapping for POST /specialties - add new specialty
-	
+	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	@PostMapping("/Specialty/save")
-	public Specialty addSpecialty(@RequestBody Specialty theSpecialty) {
+	public void addSpecialty(@RequestBody Specialty theSpecialty) {
 		
 		// also just in case they pass an id in JSON ... set id to 0
 		// this is to force a save of new item ... instead of update
@@ -61,7 +63,7 @@ private SpecialtyService specialtyService;
 		
 		specialtyService.save(theSpecialty);
 		
-		return theSpecialty;
+	
 	}
 	
 	// add mapping for PUT /specialties - update existing specialty

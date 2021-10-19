@@ -3,6 +3,7 @@ package com.misiontic.appcitas.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -37,6 +39,7 @@ private ReservasService reservasService;
 	// add mapping for GET /reservass/{reservasId}
 	
 	@GetMapping("/Reservation/{reservasId}")
+	
 	public Reservas getReservas(@PathVariable int reservasId) {
 		
 		Reservas theReservas = reservasService.findById(reservasId);
@@ -51,7 +54,8 @@ private ReservasService reservasService;
 	// add mapping for POST /reservass - add new reservas
 	
 	@PostMapping("/Reservation/save")
-	public Reservas addReservas(@RequestBody Reservas theReservas) {
+	@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	public void addReservas(@RequestBody Reservas theReservas) {
 		
 		// also just in case they pass an id in JSON ... set id to 0
 		// this is to force a save of new item ... instead of update
@@ -60,7 +64,7 @@ private ReservasService reservasService;
 		
 		reservasService.save(theReservas);
 		
-		return theReservas;
+		
 	}
 	
 	// add mapping for PUT /reservass - update existing reservas
