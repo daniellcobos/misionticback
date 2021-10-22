@@ -72,7 +72,7 @@ private ClienteService clienteService;
 	
 	// add mapping for PUT /clientes - update existing cliente
 	
-	@PutMapping("/Client")
+	@PutMapping("/Client/update")
 	public Cliente updateCliente(@RequestBody Cliente theCliente) {
 		
 		clienteService.save(theCliente);

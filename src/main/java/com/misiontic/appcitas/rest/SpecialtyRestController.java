@@ -71,7 +71,7 @@ private SpecialtyService specialtyService;
 	
 	// add mapping for PUT /specialties - update existing specialty
 	
-	@PutMapping("/Specialty")
+	@PutMapping("/Specialty/update")
 	public Specialty updateSpecialty(@RequestBody Specialty theSpecialty) {
 		
 		specialtyService.save(theSpecialty);

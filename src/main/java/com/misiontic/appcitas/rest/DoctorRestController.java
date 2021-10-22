@@ -77,7 +77,7 @@ public class DoctorRestController {
 	
 	// add mapping for PUT /doctors - update existing doctor
 	
-	@PutMapping("/Doctor")
+	@PutMapping("/Doctor/update")
 	public Doctor updateDoctor(@RequestBody Doctor theDoctor) {
 		
 		doctorService.save(theDoctor);

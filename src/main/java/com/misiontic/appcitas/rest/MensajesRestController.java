@@ -64,7 +64,7 @@ private MensajesService mensajesService;
 	
 	// add mapping for PUT /mensajess - update existing mensajes
 	
-	@PutMapping("/Message")
+	@PutMapping("/Message/update")
 	public Mensajes updateMensajes(@RequestBody Mensajes theMensajes) {
 		
 		mensajesService.save(theMensajes);

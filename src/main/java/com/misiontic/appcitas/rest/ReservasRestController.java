@@ -69,7 +69,7 @@ private ReservasService reservasService;
 	
 	// add mapping for PUT /reservass - update existing reservas
 	
-	@PutMapping("/Reservation")
+	@PutMapping("/Reservation/update")
 	public Reservas updateReservas(@RequestBody Reservas theReservas) {
 		
 		reservasService.save(theReservas);
