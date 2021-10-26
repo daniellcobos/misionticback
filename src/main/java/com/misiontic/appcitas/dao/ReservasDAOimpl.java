@@ -37,7 +37,7 @@ public class ReservasDAOimpl implements ReservasDAO {
 				Reservas dbReservas = entityManager.merge(theSpec);
 				
 				// update with id from db ... so we can get generated id for save/insert
-				theSpec.setIdMessage(dbReservas.getIdMessage());
+				theSpec.setIdReservation(dbReservas.getIdReservation());
 
 	}
 

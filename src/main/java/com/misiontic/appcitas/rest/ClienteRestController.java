@@ -43,6 +43,7 @@ private ClienteService clienteService;
 	// add mapping for GET /clientes/{clienteId}
 	
 	@GetMapping("/Client/{clienteId}")
+
 	public Cliente getCliente(@PathVariable int clienteId) {
 		
 		Cliente theCliente = clienteService.findById(clienteId);
@@ -57,7 +58,7 @@ private ClienteService clienteService;
 	// add mapping for POST /clientes - add new cliente
 	
 	@PostMapping("/Client/save")
-	@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	@ResponseStatus(HttpStatus.CREATED)
 	public void addCliente(@RequestBody Cliente theCliente) {
 		
 		// also just in case they pass an id in JSON ... set id to 0
@@ -73,6 +74,7 @@ private ClienteService clienteService;
 	// add mapping for PUT /clientes - update existing cliente
 	
 	@PutMapping("/Client/update")
+	@ResponseStatus(HttpStatus.CREATED)
 	public Cliente updateCliente(@RequestBody Cliente theCliente) {
 		
 		clienteService.save(theCliente);

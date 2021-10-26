@@ -23,7 +23,7 @@ public class Doctor {
 	// define fields
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
 	@Column(name="id")
 	@JsonView({view.Doctor.class , view.Specialty.class,view.Mensajes.class})
 	private int id;

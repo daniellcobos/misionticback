@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 public class Specialty {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
 	@Column(name="id")
 	@JsonView({view.Doctor.class , view.Specialty.class,view.Mensajes.class})
 	private int id;

@@ -72,6 +72,7 @@ private SpecialtyService specialtyService;
 	// add mapping for PUT /specialties - update existing specialty
 	
 	@PutMapping("/Specialty/update")
+	@ResponseStatus(HttpStatus.CREATED)
 	public Specialty updateSpecialty(@RequestBody Specialty theSpecialty) {
 		
 		specialtyService.save(theSpecialty);

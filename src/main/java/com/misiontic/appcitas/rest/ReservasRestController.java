@@ -60,7 +60,7 @@ private ReservasService reservasService;
 		// also just in case they pass an id in JSON ... set id to 0
 		// this is to force a save of new item ... instead of update
 		
-		theReservas.setIdMessage(0);
+		theReservas.setIdReservation(0);
 		
 		reservasService.save(theReservas);
 		

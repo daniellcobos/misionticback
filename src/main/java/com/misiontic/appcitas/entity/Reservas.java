@@ -15,10 +15,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Reservas {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
 	@Column(name="id")
 	@JsonView({view.Doctor.class , view.Cliente.class,view.Reservas.class})
-	private int idMessage;
+	private int idReservation;
 	@Column(name="startDate")
 	@JsonView({view.Doctor.class , view.Cliente.class,view.Reservas.class})
 	private Date startDate;
@@ -40,8 +40,8 @@ public class Reservas {
 	
 	public Reservas() {}
 
-	public Reservas(int idMessage, Date startDate, Date devolutionDate, Cliente client, Doctor doctor, int score) {
-		this.idMessage = idMessage;
+	public Reservas(int idReservation, Date startDate, Date devolutionDate, Cliente client, Doctor doctor, int score) {
+		this.idReservation = idReservation;
 		this.startDate = startDate;
 		this.devolutionDate = devolutionDate;
 		this.client = client;
@@ -49,12 +49,12 @@ public class Reservas {
 		this.score = score;
 	}
 
-	public int getIdMessage() {
-		return idMessage;
+	public int getIdReservation() {
+		return idReservation;
 	}
 
-	public void setIdMessage(int idMessage) {
-		this.idMessage = idMessage;
+	public void setIdReservation(int idReservation) {
+		this.idReservation = idReservation;
 	}
 
 	public Date getStartDate() {

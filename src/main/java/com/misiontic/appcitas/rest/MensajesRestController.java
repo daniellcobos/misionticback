@@ -53,7 +53,7 @@ private MensajesService mensajesService;
 	// add mapping for POST /mensajess - add new mensajes
 	
 	@PostMapping("/Message/save")
-	@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	@ResponseStatus(HttpStatus.CREATED)
 	public void addMensajes(@RequestBody Mensajes theMensajes) {
 				
 		theMensajes.setIdMessage(0);
@@ -65,6 +65,7 @@ private MensajesService mensajesService;
 	// add mapping for PUT /mensajess - update existing mensajes
 	
 	@PutMapping("/Message/update")
+	@ResponseStatus(HttpStatus.CREATED)
 	public Mensajes updateMensajes(@RequestBody Mensajes theMensajes) {
 		
 		mensajesService.save(theMensajes);
